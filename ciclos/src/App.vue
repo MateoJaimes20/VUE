@@ -1,0 +1,35 @@
+<script setup>
+  import { ref } from 'vue';
+  import CardComponent from './components/CardComponent.vue';
+  const users = ref([
+    {
+      name:'Lionel Messi',
+      mail:'papadecris@mail.com'
+    },
+    {
+      name:'penaldo',
+      mail:'hijodelgoat@mail.com'
+    }
+  ])
+  const borrarTarjeta = (index) =>{
+    console.log('Matar a', index)
+    users.value.splice(index,1)
+    console.log(users)
+  }
+</script>
+
+<template>
+  
+  <h1 class="text-2xl">
+    Hola mundo
+  </h1>
+
+  <div class="space-y-2">
+    <CardComponent v-for="(user, index) in users" :key="index" :name="user.name" :mail="user.mail" :index="index" @borrarTarjeta="borrarTarjeta"/>
+  </div>
+
+</template>
+
+<style scoped>
+
+</style>
